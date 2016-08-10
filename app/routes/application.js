@@ -8,7 +8,7 @@ export default Ember.Route.extend({
   },
   model(params) {
     console.log(params);
-    var url ='http://mapc-maps.cartodb.com/api/v2/sql?q=select%20search_tables(%27'+ params.search +'%27)';
+    var url ='//mapc-maps.cartodb.com/api/v2/sql?q=select%20search_tables(%27'+ params.search +'%27)';
     return Ember.$.ajax({url}).then(function(response) {
       return response;
     });
