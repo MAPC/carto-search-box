@@ -1,0 +1,9 @@
+Search
+{{input type="text" value=search}}
+
+<ul>
+{{#each model.rows as |result| }}
+<li><a href="http://mapc-maps.carto.com/tables/{{result.search_tables}}/public" target="_blank">{{result.search_tables}}</a></li>
+{{/each}}
+</ul>
+{{outlet}}
