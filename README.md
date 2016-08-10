@@ -20,6 +20,26 @@ You will need the following things properly installed on your computer.
 * `npm install`
 * `bower install`
 
+For your CartoDB account, you will need to install this function:
+
+```
+CREATE OR REPLACE FUNCTION public.search_tables(query text)
+ RETURNS TABLE(table_name text)
+ LANGUAGE plpgsql
+ STRICT SECURITY DEFINER
+AS $function$
+DECLARE
+sql text;
+BEGIN
+
+sql = 'SELECT table_name::text FROM information_schema.tables WHERE table_schema=''public'' AND table_type=''BASE TABLE'' AND table_name LIKE ''%'|| query || '%'' ORDER BY table_schema,table_name;';
+
+RETURN QUERY EXECUTE sql;
+
+END;
+$function$
+```
+
 ## Running / Development
 
 * `ember server`
